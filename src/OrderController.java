@@ -44,36 +44,5 @@ public class OrderController {
         return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping("orders")
-    public ResponseEntity<ArrayList<Order>> getAllOrders(@RequestParam(value = "from", defaultValue = "") Long from,
-                                                    @RequestParam(value = "to", defaultValue = "") Long to) {
-        return ResponseEntity.ok(orderService.getAllOrders(to, from));
-    }
-
-
-    public void getAllOrders(Long from, Long to, Consumer<List<Order>> ordersConsumer) {
-        webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("orders")
-                        .queryParam("from", from)
-                        .queryParam("to", to)
-                        .build())
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<List<Order>>() {})
-                .onErrorStop()
-                .subscribe(loadedOrders -> {
-                    orders.clear();
-                    orders.addAll(loadedOrders);
-                    ordersConsumer.accept(orders);
-                });
-    }
-
-    @PutMapping("customers/{customerId}")
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer updatedCustomer, @PathVariable("customerId") UUID personId) {
-        if (!updatedCustomer.getId().equals(personId)) {
-            return ResponseEntity.badRequest().build();
-        }
-        return ResponseEntity.ok(customerService.savePerson(updatedCustomer));
-    }
 
 }
