@@ -13,6 +13,10 @@ public class InventoryService implements L02Hard.Inventory {
         public void add(String item){
             stock.putIfAbsent(item, stock.get(item) +1);
         }
+        public void makeoutofStock(String item){
+            if(item == null || !stock.containsKey(item)) return;
+            stock.put(item, 0);
+        }
 
         public int getPrice(String item){
             return stock.getOrDefault(stock.get(item), 0);

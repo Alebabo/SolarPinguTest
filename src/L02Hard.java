@@ -24,7 +24,7 @@ public class L02Hard {
     }
 
     interface Notifier {
-        void confirm(String item, Consumer<String> consumer);
+        void confirm(String item);
     }
 
     // TODO: InventoryService implements Inventory (Bestand pruefen + senken)
@@ -33,7 +33,10 @@ public class L02Hard {
     // TODO: OrderCoordinator nutzt die drei Services in order(...)
 
     public static void main(String[] args) {
-        // TODO: Coordinator bauen und 3x "book" bestellen (2x ok, 1x out of stock)
+        Ordercordinator ordercordinator = new Ordercordinator();
+        for (int i = 0; i < 3; i++) {
+            ordercordinator.bookBook("book");
+        }
     }
 }
 
