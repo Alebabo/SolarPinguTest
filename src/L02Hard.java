@@ -16,7 +16,7 @@ public class L02Hard {
     }
 
     interface Inventory {
-        boolean reserve(String item);
+        boolean reserve(Book item);
     }
 
     interface Payment {
@@ -24,7 +24,7 @@ public class L02Hard {
     }
 
     interface Notifier {
-        void confirm(String item);
+        void confirm(Book item);
     }
 
     // TODO: InventoryService implements Inventory (Bestand pruefen + senken)
@@ -34,8 +34,9 @@ public class L02Hard {
 
     public static void main(String[] args) {
         Ordercordinator ordercordinator = new Ordercordinator();
+        Book book = new Book("67", 67, "Ale");
         for (int i = 0; i < 3; i++) {
-            ordercordinator.bookBook("book");
+            ordercordinator.bookBook(book);
         }
     }
 }

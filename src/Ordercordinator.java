@@ -18,7 +18,7 @@ public class Ordercordinator{
         inventoryService = new InventoryService();
     }
 
-    public void bookBook(String item){
+    public void bookBook(Book item){
         boolean reserviert = inventoryService.reserve(item);
         if(!reserviert) {
             System.out.println(item + " konnte nicht reserviert werden! 67");
