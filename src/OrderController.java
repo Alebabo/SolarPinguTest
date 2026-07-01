@@ -11,16 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @RestController
+@RequestMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
 public class OrderController {
-    private WebClient webClient;
     private ArrayList<Order> orders;
     private Ordercordinator ordercordinator;
     public OrderController() {
-        this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8080")
-                .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE )
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .build();
         this.orders = new ArrayList<>();
         ordercordinator = new Ordercordinator();
     }
