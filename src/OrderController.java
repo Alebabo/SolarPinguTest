@@ -13,8 +13,8 @@ public class OrderController {
     public OrderController() {
         this.webClient = WebClient.builder()
                 .baseUrl("http://localhost:8080")
-                .defaultHeader(HttpHeaders.ACCEPT, PageAttributes.MediaType.APPLICATION_JSON_VALUE )
-                .defaultHeader(HttpHeaders.CONTENT_TYPE, PageAttributes.MediaType.APPLICATION_JSON_VALUE)
+                .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE )
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
         this.orders = new ArrayList<>();
     }
